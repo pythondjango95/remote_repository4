@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+{% block content %}
+    <style>
+    #p1{
+        padding: 10px;
+
+    }
+    </style>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        {% if request.user.is_staff %}
+        <li class="nav-item active">
+            <a class="navbar-brand" href="{% url 'home' %}">Dashboard</a>
+        </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'product' %}">Product <span class="sr-only">(current)</span></a>
+      </li>
+        {% else %}
+        <li class="nav-item active">
+            <a class="nav-link" href="{% url 'account_setting' %}">MyProfile</a>
+        </li>
+        {% endif %}
+    </ul>
+     </div>
+        <span id="p1" style="color: white">Hello, {{ request.user|capfirst }}</span>
+    <a href="{% url 'logout' %}" style="color: red">Logout</a>
+</nav>
+{% endblock %}
+</body>
+</html>

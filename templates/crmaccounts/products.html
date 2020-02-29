@@ -1,0 +1,55 @@
+{% extends 'crmaccounts/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+{% block content %}
+    <buttton><center><a class="btn btn-warning text-red" href="{% url 'add_product'%}">Add Product</a></center></buttton>
+    <br>
+<div class="container-fluid">
+<div class="row">
+    <div class="offset-md-2 col-md-8">
+        <div class="card bg-dark">
+            <div class="card-header bg-secondary">
+                <h2 class="card-title text-center bg-danger text-white">Product Details</h2>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered text-center text-white bd-dark">
+                    <thead class="bg-primary text-center text-white">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>category</th>
+                        <th>Description</th>
+                        <th>Created_date</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for product in product %}
+                    <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.created_date }}</td>
+                    <td>
+                        <a class="btn btn-success" href="{% url 'update_product' product.id%}">Update</a>
+                        <a class="btn btn-danger" href="{% url 'delete_product' product.id %}">delete</a>
+                    </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
+</body>
+</html>

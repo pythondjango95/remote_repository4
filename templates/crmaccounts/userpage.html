@@ -1,0 +1,57 @@
+{% extends 'crmaccounts/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Page</title>
+</head>
+<body>
+{% block content %}
+    {% csrf_token %}
+{% include 'crmaccounts/status.html' %}
+    <br>
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-md">
+        <div class="card bg-dark">
+            <div class="card-header bg-primary">
+                <h2 class="card-title bg-primary text-center">{{ customers.first_name }} All Orders</h2>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered text-center bg-dark">
+                    <thead class="text-white bg-warning">
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Created_date</th>
+                        <th>Category</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody class="text-white">
+                    {% for order in order %}
+                    <tr>
+                    <td>{{ order.customer.first_name }}</td>
+                    <td>{{ order.product.name }}</td>
+                    <td>{{ order.product.price }}</td>
+                    <td>{{ order.status }}</td>
+                    <td>{{ order.created_date }}</td>
+                    <td>{{ order.product.category }}</td>
+                    <td>
+                        <a class="btn btn-success" href="{% url 'update_order' order.id %}">Update</a>
+                        <a class="btn btn-danger" href="{% url 'delete_order' order.id %}">Delete</a>
+                    </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

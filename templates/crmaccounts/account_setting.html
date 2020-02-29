@@ -1,0 +1,55 @@
+{% extends 'crmaccounts/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account_Profile</title>
+</head>
+<body>
+{% block content %}
+    <style>
+    img{
+        border-radius: 30%;
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+    h1{
+        font-family: Algerian;
+    }
+    .container{
+        margin-left: 0px;
+        background-color: darksalmon;
+    }
+    body{
+        background-color: darksalmon;
+    }
+
+    </style>
+<h1 class="text-center bg-info text-white">Its My Profile Page</h1>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-3 m">
+            <div class="card card-body bg-success text-white">
+                <a class="btn btn-warning" href="{% url 'home' %}"> &#8592 Back To Profile</a>
+                <hr>
+                <h3  class="bg-secondary text-white" style="text-align: center;">Account Setting</h3>
+                <hr>
+                <img class="profile_pic" src="{{ request.user.customers.profile_pic.url }}">
+            </div>
+
+        </div>
+        <div class="col-md-9">
+            <div class="card card-body bg-primary text-white">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Submit" class="btn btn-danger">
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Order</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .container{
+            background-color: crimson;
+            width: 300px;
+            margin-top: 100px;
+            border-radius: 50px;
+            color: white;
+            border-block-style: wave;
+        }
+        body{
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+<body>
+<h2 class="bg-info text-white text-center">Place Your Order</h2>
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+          <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+              <center>
+            <input type="submit" value="Add" class="btn btn-warning">
+              </center>
+          </form>
+
+        </div>
+    </div>
+</div>
+<center><button class="btn btn-info"><a class="text-white" href="{% url 'home' %}">Back To Page</a></button></center>
+</body>
+</html>

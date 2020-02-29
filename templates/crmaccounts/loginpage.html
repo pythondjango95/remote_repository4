@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .container{
+            background-color: coral;
+            border: 2px solid crimson;
+            font-family: Algerian;
+            width: 500px;
+            margin-top: 50px;
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+            border-bottom-right-radius: 40px;
+            border-bottom-left-radius: 40px;
+
+        }
+        body{
+            background-color: crimson;
+        }
+        #p11{
+            background-color: crimson;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="offset-md-2 col-md-8">
+
+            <form method="POST">
+                <h2 class="text-center mt-5 bg-primary text-white">Login Page</h2>
+                {% csrf_token %}
+                <lable>Username:</lable>
+                <input type="text" name="username" class="form-control">
+
+                <lable>Password:</lable>
+                <input type="password" name="password" class="form-control">
+                <center>
+                <input type="submit" value="Login" class="btn btn-danger">
+                </center>
+            <br>
+                {% for i in messages %}
+                <p id="p11">{{ i }}</p>
+                {% endfor %}
+                <h3>Create New Account:<a class="btn btn-success" href="{% url 'register' %}">SingUp</a></h3>
+            </form>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
